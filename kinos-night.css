@@ -1,0 +1,48 @@
+body {
+  color: #ccc;
+}
+
+.shows, .actions {
+  background-color: #1c1e21;
+}
+
+.show {
+  color: #acc1ce;
+  background-color: #282c34;
+  border-bottom: 1px solid #212429;
+}
+
+.show:hover {
+  background-color: #2c313c;
+}
+
+.genres, .rating, .location, .auditorium {
+  color: #6b7882;
+}
+
+.rating {
+  background-color: #343a46;
+}
+
+.imdb {
+  color: #dadeea;
+  background-color: #d7404a;
+}
+
+.lang {
+  color: #acc1ce;
+}
+
+.movies {
+  background-color: #22242a;
+}
+
+@media (max-width: 499px) {
+  .show {
+    background-color: #282c34;
+  }
+
+  .show:hover {
+    background-color: #282c34;
+  }
+}

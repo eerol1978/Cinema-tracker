@@ -1,0 +1,1120 @@
+*, *:before, *:after {
+  margin: 0;
+  padding: 0;
+  box-sizing: border-box;
+  outline: none;
+  -webkit-touch-callout: none;
+  -webkit-user-select: none;
+  -khtml-user-select: none;
+  -moz-user-select: none;
+  -ms-user-select: none;
+  user-select: none;
+  -webkit-font-smoothing: antialiased;
+  font-family: 'Helvetica Neue', Arial;
+  font-size: 14px
+}
+
+body {
+  background-color: #282c34;
+}
+.modal {
+  z-index: 50;
+  display: none;
+}
+.modal-window {
+  z-index: 100;
+  padding: 40px;
+  margin: 100px 20vw 0 20vw;
+  background: white;
+  display: none;
+  width: 60vw;
+  position: absolute;
+}
+.modal-poster {width: 250px; float: left; margin: -40px;}
+.modal-info {margin-left: 250px;}
+.synopsis {padding-top: 20px; line-height: 20px}
+.content {
+  position: relative;
+  z-index: 2;
+  transition: transform 300ms;
+  transform: translateY(45px);
+  min-width: 320px;
+}
+
+.movieinfo {
+  display: none;
+  top: 0;
+  left: 0;
+  width: 100vw;
+  height: 100%;
+  position: fixed;
+  z-index: 10;
+  pointer-events: none
+}
+
+.movieinfo.visible, .fog.visible {
+  display: block
+}
+
+.movieinfo iframe {
+  pointer-events: auto;
+  top: 95px;
+  margin-left: 15vw;
+  z-index: 5;
+  display: block;
+  width: 70vw;
+  height: calc(70vw / 1.777777777777778);
+  position: absolute
+}
+
+.arrow {
+  width: 40px;
+  height: 40px;
+  background-color: #fff;
+  position: absolute;
+  top: -128px;
+  z-index: 5;
+  border-radius: 25px;
+  left: 20px;
+  transition: all 100ms;
+  box-shadow: 0 5px 5px 0 rgba(0, 0, 0, 0.3);
+  background-image: url('https://kinos.ee/images/arrow-left.svg');
+  background-repeat: no-repeat;
+  background-size: 12px;
+  background-position: center;
+}
+
+.arrow:hover {
+  top: -133px;
+  width: 50px;
+  height: 50px;
+  box-shadow: 0 10px 10px 0 rgba(0, 0, 0, 0.2);
+}
+
+.arrow.right {
+  left: unset;
+  right: 20px;
+  background-image: url('https://kinos.ee/images/arrow-right.svg');
+}
+
+.arrow.left:hover {
+  left: 15px;
+}
+
+.arrow.right:hover {
+  right: 15px;
+}
+
+.arrow.disabled {
+  opacity: .2;
+  pointer-events: none;
+}
+
+.arrow.disabled:hover {
+  top: -128px;
+  left: 20px;
+  box-shadow: 0 5px 5px 0 rgba(0, 0, 0, 0.1);
+}
+
+.arrow.right.disabled:hover {
+  left: unset;
+  right: 20px;
+}
+
+.fog {
+  display: none;
+  z-index: 5;
+  top: 0;
+  left: 0;
+  width: 100vw;
+  height: 100%;
+  background-color: rgba(0, 0, 0, 0.9);
+  position: fixed
+}
+
+.showfilter {
+  padding: 10px 20px;
+  width: 100%;
+  background-color: #d7404a;
+  color: #fff;
+  font-size: 14px;
+  display: block;
+  text-align: center;
+  cursor: pointer
+}
+
+.startDate {
+  display: none
+}
+
+.new {
+  font-weight: bold;
+  display: inline-block;
+  position: relative;
+  background-color: #fc0;
+  color: #d7404a;
+  font-size: 10px;
+  padding: 0 6px;
+  margin: 0 0 0 10px;
+  top: -3px;
+  line-height: 16px
+}
+
+.push {
+  transform: translateY(261px);
+}
+
+.year {
+  font-weight: normal;
+  font-size: 12px;
+}
+
+.header {
+  background-color: #d7404b;
+  color: #e8a2a6;
+  z-index: 6;
+  position: fixed;
+  top: 0;
+  width: 100%;
+  min-width: 320px;
+  height: 45px;
+  box-shadow: 0 5px 5px 0 rgba(0, 0, 0, 0.3)
+}
+
+.rounded-corners {
+  -webkit-border-radius: 3px;
+  -moz-border-radius: 3px;
+  border-radius: 3px
+}
+
+.show {
+  position: relative;
+  transition: margin 150ms;
+  min-width: 320px;
+  display: -webkit-box;
+  display: -moz-box;
+  display: -ms-flexbox;
+  display: -webkit-flex;
+  display: flex;
+  -webkit-box-align: center;
+  -moz-box-align: center;
+  -ms-flex-align: center;
+  -webkit-align-items: center;
+  align-items: center
+}
+
+.filter {
+  cursor: pointer
+}
+
+.show:hover img {
+  position: relative;
+  height: 146px;
+  margin: -27px 0 -27px -22px;
+  box-shadow: 0 10px 20px 0 rgba(0, 0, 0, 0.3);
+  z-index: 2
+}
+
+.button:hover {
+  background-color: #e85d66
+}
+
+.actions {
+  position: absolute;
+  display: flex;
+  -webkit-box-align: center;
+  -moz-box-align: center;
+  -ms-flex-align: center;
+  -webkit-align-items: center;
+  align-items: center;
+  left: 0;
+  bottom: -70px;
+  width: 100%;
+  height: 0;
+  overflow: hidden
+}
+
+.showActions {
+  margin-bottom: 70px;
+  box-shadow: 0 4px 10px 0 rgba(0, 0, 0, 0.1)
+}
+
+.showActions>.actions {
+  height: 70px
+}
+
+.showActions>.actions>.button, .showActions>.actions>.close {
+  opacity: 1
+}
+
+.title {
+  font-size: 18px;
+  line-height: 22px;
+  font-weight: normal
+}
+
+.title .original {
+  font-weight: bold;
+  font-size: 12px;
+  display: block;
+  margin: 3px 0;
+  line-height: 16px
+}
+
+.info {
+  display: block;
+  float: left;
+  padding: 15px 15px
+}
+
+.poster {
+  transition: all 150ms;
+  height: 80px;
+  padding: 0;
+  position: relative
+}
+
+.posterClear {
+  position: static !important;
+  height: 80px !important;
+  margin: 0 !important;
+  box-shadow: none !important
+}
+
+.lang {
+  color: #000;
+  margin: 0;
+  font-size: 12px;
+  line-height: 16px;
+  display: inline-block
+}
+
+.genres {
+  color: #888;
+  margin: 0 5px 0 0;
+  font-size: 12px;
+  line-height: 16px;
+  display: inline-block
+}
+
+.rating {
+  color: #888;
+  font-size: 10px;
+  display: inline-block;
+  background-color: #f2f2f2;
+  padding: 1px 6px;
+  margin: 5px 3px 0 0;
+  line-height: 16px;
+  box-shadow: 0 1px 1px 0 rgba(0, 0, 0, 0.2)
+}
+
+.imdb {
+  color: #fff;
+  font-size: 10px;
+  display: inline-block;
+  background-color: #fc9c47;
+  padding: 1px 6px;
+  margin-top: 5px;
+  line-height: 16px;
+  box-shadow: 0 1px 1px 0 rgba(0, 0, 0, 0.2);
+  text-decoration: none
+}
+
+.location {
+  margin-top: 5px;
+  font-weight: bold;
+  color: #d7404a !important
+}
+
+.time {
+  font-size: 20px;
+  line-height: 20px;
+  letter-spacing: -.5px
+}
+
+.info.time {
+  text-align: center;
+  font-size: 12px;
+  line-height: 17px;
+  min-width: 120px
+}
+
+.id, .kino {
+  display: none
+}
+
+.opacity_01 {
+  opacity: .1
+}
+
+.opacity_02 {
+  opacity: .2
+}
+
+.opacity_05 {
+  opacity: .5
+}
+
+.display_none, .notintheatre {
+  display: none !important
+}
+
+.button {
+  transition: all 250ms;
+  padding: 10px 36px 10px 16px;
+  background-color: #d7404b;
+  color: #fff;
+  cursor: pointer;
+  text-decoration: none;
+  box-shadow: 0 5px 15px 0 rgba(0, 0, 0, 0.1);
+  opacity: 0;
+  display: block;
+  margin: 0 20px;
+  background-image: url('https://kinos.ee/images/new-window.svg');
+  background-repeat: no-repeat;
+  background-size: 11px;
+  background-position: center right 16px
+}
+
+.button.video {
+  padding: 10px 16px 10px 32px;
+  margin: 0 -10px 0 20px;
+  background-image: url('https://kinos.ee/images/play.svg');
+  background-size: 18px;
+  background-position: center left 10px;
+  background-repeat: no-repeat;
+}
+
+.button.buy {
+  position: relative;
+  padding-left: 30px;
+  background-image: url(https://kinos.ee/images/code.svg), url(https://kinos.ee/images/new-window.svg);
+  background-position: center left 5px, center right 16px;
+  background-size: 7px, 11px;
+}
+
+.button.buy::after {
+  display: block;
+  position: absolute;
+  width: 4px;
+  height: 4px;
+  border-radius: 2px;
+  content: '';
+  background-color: #1d1e22;
+  z-index: 2;
+  left: 16px;
+  top: -2px;
+}
+
+.button.buy::before {
+  display: block;
+  position: absolute;
+  width: 4px;
+  height: 4px;
+  border-radius: 2px;
+  content: '';
+  background-color: #1d1e22;
+  z-index: 2;
+  left: 16px;
+  bottom: -2px;
+}
+
+.close {
+  transition: all 250ms;
+  position: absolute;
+  right: 20px;
+  height: 30px;
+  width: 30px;
+  background: url('https://kinos.ee/images/close.svg') no-repeat;
+  background-position: center;
+  background-size: 12px;
+  cursor: pointer;
+  opacity: 0
+}
+
+.opacity_null {
+  opacity: 0
+}
+
+.tooLate {
+  color: #fff;
+  text-align: center;
+  position: fixed;
+  transform: translate(calc(50vw - 150px), calc(50vh - 170px));
+  background-image: url(images/night.svg);
+  width: 300px;
+  height: 270px;
+  background-repeat: no-repeat;
+  background-size: 200px;
+  background-position: top center
+}
+
+.tooLate .button {
+  opacity: 1;
+  margin: 0;
+  padding: 10px 16px;
+  background-image: none;
+  bottom: 0;
+  left: 50%;
+  transform: translateX(-50%);
+  position: absolute;
+  display: table
+}
+
+.d3 {
+  margin: -5px -5px -5px 10px;
+  display: inline-block;
+  width: 32px;
+  height: 25px;
+  background-image: url('https://kinos.ee/images/3d.svg');
+  background-size: contain;
+  background-repeat: no-repeat;
+  background-position: center;
+  font-size: 0;
+  line-height: 40px;
+}
+
+.d5 {
+  margin: -5px -5px -5px 10px;
+  display: inline-block;
+  width: 32px;
+  height: 25px;
+  background-image: url('https://kinos.ee/images/5d.svg');
+  background-size: contain;
+  background-repeat: no-repeat;
+  background-position: center;
+  font-size: 0;
+  line-height: 40px;
+}
+
+.top {
+  margin: -5px -5px -5px 7px;
+  display: inline-block;
+  width: 22px;
+  height: 25px;
+  background-image: url('https://kinos.ee/images/top-1.svg');
+  background-size: contain;
+  background-repeat: no-repeat;
+  background-position: center;
+}
+
+.top.second {
+  background-image: url('https://kinos.ee/images/top-2.svg');
+}
+
+.top.third {
+  background-image: url('https://kinos.ee/images/top-3.svg');
+}
+
+.ui-tooltip {
+  padding: 5px 8px;
+  color: #333;
+  background: #f2f2f2;
+  border-radius: 3px;
+  box-shadow: 0 2px 4px 0 rgba(0, 0, 0, 0.2);
+  z-index: 100;
+  position: absolute;
+  max-width: 320px;
+}
+
+.ui-tooltip-content, .ui-tooltip-content strong {
+  font-size: 12px !important;
+  line-height: 16 px;
+}
+
+.ui-helper-hidden-accessible {
+  display: none;
+}
+
+.logo {
+  display: block;
+  float: left;
+  height: 45px;
+  background-size: 55px 55px;
+  background-position: left center;
+  background-repeat: no-repeat;
+  margin: 0 0 0 20px;
+  padding: 8px 65px;
+  font-size: 10px;
+  text-decoration: none;
+  line-height: 15px;
+  white-space: nowrap;
+  color: #fff;
+  background-image: url('https://kinos.ee/images/kinos_ee.svg')
+}
+
+.logo span {
+  font-weight: bold;
+  display: block
+}
+
+.logo {
+  width: 145px
+}
+
+.logo.stats {
+  width: 190px
+}
+
+.logo.tartu, .logo.parnu, .logo.narva {
+  width: 140px
+}
+
+.logo.saaremaa {
+  width: 155px
+}
+
+.theatres {
+  float: left;
+  margin-left: 20px;
+  line-height: 45px
+}
+
+.current {
+  color: #fff
+}
+
+.what {
+  position: absolute;
+  right: 0
+}
+
+button {
+  float: right;
+  display: block;
+  padding: 0 16px;
+  height: 45px;
+  line-height: 45px;
+  cursor: pointer;
+  border: none;
+  border-left: 1px solid #c5353e;
+  color: #fff;
+  font-size: 14px;
+  transition: background-color 100ms;
+}
+
+button:hover {
+  background-color: #e24953 !important
+}
+
+button.open {
+  background-color: #c5353e !important
+}
+
+button:active {
+  background-color: #af2c34 !important
+}
+
+button.more {
+  height: 45px;
+  background-size: 24px 24px !important;
+  background: url('images/menu.svg') no-repeat 10px;
+  padding-left: 35px;
+}
+
+button.posters {
+  background-size: 16px 18px;
+  background-image: url(images/movies.svg);
+  background-repeat: no-repeat;
+  background-position: 18px 13px;
+  background-color: #d7404a;
+  padding-left: 42px
+}
+
+.search {
+  width: 220px;
+  font-size: 14px;
+  line-height: 45px;
+  padding: 0 0 0 45px;
+  border: none;
+  margin: 0 20px;
+  color: #fff;
+  background-color: #d7404a;
+  background-image: url('https://kinos.ee/images/search.svg');
+  background-repeat: no-repeat;
+  background-position: 17px;
+  background-size: 18px;
+  border-left: 1px solid #c5353e;
+  float: right;
+  -webkit-touch-callout: initial;
+  -webkit-user-select: initial;
+  -khtml-user-select: initial;
+  -moz-user-select: initial;
+  -ms-user-select: initial;
+  user-select: initial;
+}
+
+.search::placeholder {
+  color: #fff;
+  opacity: .5;
+}
+
+.search::-ms-input-placeholder {
+  color: #fff;
+  opacity: .5;
+}
+
+.search::-ms-input-placeholder {
+  color: #fff;
+  opacity: .5;
+}
+
+.sidemenu {
+  z-index: 3;
+  overflow: scroll;
+  position: fixed;
+  right: -20px;
+  top: 45px;
+  opacity: 0;
+  transition: all 150ms;
+  pointer-events: none;
+  width: 280px;
+  background-color: #c5353e;
+  height: calc(100vh - 45px);
+  padding: 15px;
+  cursor: default
+}
+
+.sidemenu.open {
+  right: 0;
+  opacity: 1;
+  pointer-events: unset
+}
+
+.sidemenu a {
+  line-height: 40px;
+  background-color: #d7404b;
+  list-style: none;
+  padding: 0 70px 0 15px;
+  border-top: 1px solid #c5353e;
+  white-space: nowrap;
+  display: block;
+  text-decoration: none;
+  color: #ffc4c8;
+  box-shadow: 0 1px 1px 0 rgba(0, 0, 0, 0.2)
+}
+
+.sidemenu a:first-child {
+  border-radius: 5px 5px 0 0;
+  border-top: none !important
+}
+
+.sidemenu a:last-child {
+  border-radius: 0 0 5px 5px
+}
+
+.sidemenu a:hover {
+  background-color: #e04f59;
+}
+
+.sidemenu a.current, .sidemenu a.current:hover {
+  background-color: #e04f59;
+  cursor: default;
+  background-image: url('images/check.svg');
+  background-repeat: no-repeat;
+  background-size: 14px;
+  background-position: right 15px center;
+  color: #fff
+}
+
+.sidemenuitem label {
+  font-size: 10px;
+  line-height: 24px;
+  text-transform: uppercase;
+  background-size: 22px 23px !important;
+  background-repeat: no-repeat !important;
+  background-position: 0 !important;
+  padding-left: 28px;
+  display: block;
+  margin-bottom: 5px;
+  color: #fff;
+}
+
+.sidemenuitem.date>label {
+  background: url('images/calendar.svg');
+  background-size: 21px 24px !important;
+}
+
+.sidemenuitem.city>label {
+  background: url('images/location.svg');
+  background-position: 3px;
+  margin-top: 20px
+}
+
+.sidemenuitem.theme>label {
+  background: url('images/theme.svg');
+  background-position: 3px;
+  padding-left: 28px;
+  margin-top: 20px
+}
+
+.sidemenuitem.stats>label {
+  background: url('images/pie.svg');
+  background-size: 20px !important;
+  background-position: 3px;
+  padding-left: 28px;
+  margin-top: 20px
+}
+
+.sidemenuitem .input {
+  font-size: 14px;
+  line-height: 40px;
+  color: #fff;
+  padding: 0 70px 0 15px;
+  white-space: nowrap;
+  border-radius: 5px;
+  display: block;
+  margin-bottom: 5px;
+  box-shadow: 0 1px 1px 0 rgba(0, 0, 0, 0.2);
+  background-image: url('images/arrow-down.svg');
+  background-repeat: no-repeat;
+  background-size: 14px;
+  background-position: right 15px center;
+  background-color: #e04f59;
+  cursor: pointer
+}
+
+.sidemenuitem .input.open {
+  box-shadow: none;
+  background-image: url('images/arrow-up.svg');
+  background-color: #d7404b
+}
+
+.sidemenuitem.stats .input {
+  background-image: none;
+  border-radius: 5px;
+  background-image: url('https://kinos.ee/images/new-window.svg');
+  background-repeat: no-repeat;
+  background-size: 12px;
+  background-position: right 16px center;
+}
+
+.sidemenuitem .options {
+  display: none
+}
+
+.sidemenuitem .options.open {
+  display: block
+}
+
+.sidemenuitem.about {
+  color: #ffc4c8;
+  margin-top: 20px;
+  line-height: 17px;
+  font-size: 12px
+}
+
+.fb-like {
+  margin: 20px 0 80px 0;
+  display: block !important;
+}
+
+.about a {
+  line-height: 17px !important;
+  font-size: 12px;
+  background-color: #c5353e;
+  padding: 0 !important;
+  border-top: none;
+  box-shadow: none;
+  display: unset;
+  font-weight: bold
+}
+
+.about a:hover {
+  background-color: #c5353e;
+  color: #fff
+}
+
+.about a.blank::after {
+  background-image: url('https://kinos.ee/images/new-window.svg');
+  background-repeat: no-repeat;
+  background-size: 10px;
+  background-position: center;
+  content: '';
+  width: 10px;
+  height: 10px;
+  display: inline-block;
+  left: 7px;
+  top: 0;
+  opacity: 0.7;
+  position: relative
+}
+
+.about a:hover.blank::after {
+  opacity: 1
+}
+
+.position-fixed {
+  position: fixed !important
+}
+
+.link {
+  transition: color 150ms;
+  cursor: pointer
+}
+
+.link:hover {
+  color: #fff
+}
+
+.movies {
+  transition: opacity 250ms;
+  background-color: #c5353e;
+  line-height: 0;
+  padding: 4px 3px;
+  white-space: nowrap;
+  overflow: auto;
+  -webkit-overflow-scrolling: touch;
+  z-index: 4;
+  position: absolute;
+  font-size: 0;
+  width: 100vw;
+  right: 0;
+  top: -216px;
+  opacity: 0;
+  pointer-events: none
+}
+
+.movies.open {
+  opacity: 1;
+  pointer-events: unset
+}
+
+.movies::-webkit-scrollbar {
+  width: 0;
+  height: 0;
+  background: transparent
+}
+
+.mh {
+  height: 220px;
+  width: 100%;
+  position: fixed;
+  top: -220px;
+  background-color: #bb2e38;
+  z-index: 5
+}
+
+.movie {
+  display: inline-block;
+  box-shadow: none !important;
+  transition: all 300ms;
+  cursor: pointer;
+  padding: 4px;
+  position: relative;
+  font-size: 0;
+}
+
+.movie:last-child::after {
+  content: '';
+  display: block;
+  clear: both
+}
+
+.movie img {
+  height: 200px !important;
+  display: block
+}
+
+.movie.highlight::after {
+  content: "";
+  background-image: url(https://kinos.ee/dev/images/exit.svg);
+  background-size: 20px;
+  top: -6px;
+  right: -6px;
+  height: 20px;
+  width: 20px;
+  z-index: 2;
+  position: absolute;
+  display: block;
+  border-radius: 20px;
+  box-shadow: 0 3px 5px 0 rgba(0, 0, 0, 0.5)
+}
+
+.auditorium {
+  font-size: 12px;
+  line-height: 20px
+}
+
+@media (max-width:1190px) {
+  button.more {
+    width: 52px;
+    height: 45px;
+    background-size: 24px 24px !important;
+    background: url('images/menu.svg') no-repeat center;
+  }
+
+  button.more .txt {
+    display: none;
+  }
+}
+
+@media (max-width:1130px) {
+  .theatres {
+    display: none
+  }
+
+  .search {
+    width: calc(100vw - 370px);
+    float: left;
+  }
+}
+
+@media (max-width:599px) {
+  .search {
+    width: 55px;
+    margin-left: 0px;
+    margin-right: 0px;
+    float: right;
+    color: #d7404a;
+  }
+
+  .search.focus {
+    width: calc(100vw - 156px);
+    color: #fff;
+    float: left;
+  }
+
+  .search::placeholder {
+    opacity: 0
+  }
+
+  .search::-ms-input-placeholder {
+    opacity: 0
+  }
+
+  .search::-ms-input-placeholder {
+    opacity: 0
+  }
+
+  .hiddeninmobile {
+    display: none;
+  }
+
+  .show:hover img {
+    position: static;
+    height: 80px;
+    width: auto;
+    margin: 0;
+    box-shadow: none
+  }
+
+  .button:hover {
+    background-color: #d7404b
+  }
+
+  .info {
+    padding: 15px 10px
+  }
+
+  .info.time {
+    min-width: 90px
+  }
+
+  .poster {
+    padding: 0
+  }
+
+  .title {
+    font-size: 16px;
+    line-height: 20px
+  }
+
+  .location, .auditorium {
+    font-size: 11px
+  }
+
+  .auditorium {
+    line-height: 12px
+  }
+
+  .genres, .lang {
+    font-size: 11px
+  }
+
+  .logo {
+    margin: 0 10px
+  }
+
+  .info.time {
+    min-width: 80px
+  }
+
+  .sidemenu {
+    margin-left: 0;
+    width: 100vw
+  }
+
+  .sidemenu a {
+    line-height: 50px;
+    padding: 0 20px
+  }
+
+  .sidemenuitem.about {
+    margin: 20px 0
+  }
+
+  .movies {
+    white-space: initial;
+    opacity: 0;
+    top: 0
+  }
+
+  .movies.open {
+    height: calc(100vh - 45px)
+  }
+
+  .movie>img {
+    height: auto !important;
+    width: 100%;
+    padding: 0
+  }
+
+  .movie:nth-child(3n+1) {
+    clear: both
+  }
+
+  .movie {
+    width: 33.333%
+  }
+
+  .push {
+    transform: translateY(45px);
+  }
+
+  .sidemenuitem .input {
+    line-height: 50px;
+    padding: 0 70px 0 20px
+  }
+
+  .movieinfo iframe {
+    top: 45px;
+    margin-left: 0;
+    z-index: 5;
+    display: block;
+    width: 100vw;
+    height: calc(100vw / 1.777777777777778);
+    position: absolute
+  }
+}
+
+@media (max-width:399px) {
+  button.posters {
+    font-size: 0;
+    padding-left: 37px
+  }
+
+  .search.focus {
+    width: calc(100vw - 110px);
+    min-width: 210px;
+    float: left;
+  }
+}
+
+@media (max-width:329px) {
+  .logo {
+    width: 145px;
+    margin: 0 0 0 10px;
+    font-size: 8px;
+  }
+}

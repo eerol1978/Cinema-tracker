@@ -1,0 +1,34 @@
+body {
+  color: #000;
+}
+
+.shows, .actions {
+  background-color: #1c1e21;
+}
+
+.show {
+  color: #333;
+  background-color: #f8f8f8;
+  border-bottom: 1px solid #e4e4e4;
+}
+
+.show:hover {
+  background-color: #fff;
+}
+
+.details {
+  color: #9f9f9f;
+}
+
+.rating {
+  box-shadow: 0px 1px 0px 0px rgba(0, 0, 0, 0.1);
+}
+
+@media (max-width: 499px) {
+  .show {
+    background-color: #fff;
+  }
+  .rating {
+    background-color: #f8f8f8;
+  }
+}
